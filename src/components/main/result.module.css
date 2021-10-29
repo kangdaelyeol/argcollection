@@ -1,0 +1,15 @@
+.main{
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+}
+
+.entity{
+  display: flex;
+  border:1px solid gray;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  width: 100px;
+  height: 100px;
+}

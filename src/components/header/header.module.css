@@ -1,0 +1,13 @@
+.main{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.subtitle{
+  font-size: 0.7rem;
+  font-weight: normal;
+}
