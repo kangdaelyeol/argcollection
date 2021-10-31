@@ -1,83 +1,91 @@
-*{
-  transition: all .7s ease-in;
-}
-.main{
+/* * {
+  transition: all 0.7s ease-in;
+} */
+.main {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  margin:30px;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.arraybox{
+.arraybox {
   display: flex;
   flex-wrap: wrap;
   width: 80%;
   height: 30vh;
   justify-content: space-evenly;
+  align-items: center;
   margin-bottom: 100px;
+  transition: all 0.2s ease;
 }
-.entity{
+
+.entity {
   text-align: center;
-  font-size:1rem;
-  width:50px;
+  font-size: 1rem;
+  width: 50px;
   height: 50px;
 }
-.entity:focus{
+.entity:focus {
   outline: none;
 }
 
-.btn{
-  all:unset;
+.btn {
+  all: unset;
   width: 150px;
-  border:1px solid black;
+  border: 1px solid black;
   display: flex;
-  padding:0.5rem;
+  padding: 0.5rem;
   justify-content: center;
   align-items: center;
-  font-size:1rem;
-  cursor:pointer;
+  font-size: 1rem;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-property: color;
+  transition: 0.25s ease;
 }
 
-.select{
+.btn:hover {
+  background-color: #808080;
+  color: white;
+}
+
+.select {
   width: 150px;
 }
 
-.select:focus{
+.select:focus {
   outline: none;
 }
 
-.optionbox{
+.optionbox {
   display: flex;
   justify-content: space-evenly;
   width: 50%;
   margin-bottom: 40px;
 }
 
-.startup{
-  transform: translateY(-2500px);
-  opacity: .1;
-}
 
-.startdown{
-  transform: translateY(2500px);
-  opacity: .1;
-}
-
-
-
-
-.result{
+.result {
   display: flex;
   width: 80%;
   justify-content: center;
   transition: all 1s ease;
   transform: translateY(-700px);
-  background-color:turquoise;
+  background-color: turquoise;
 }
 
-.resultdisplay{
+.resultdisplay {
   transform: translateY(1000px);
+}
+
+.set__op0 {
+  opacity: 0;
+}
+
+.set__none {
+  display: none;
+  
 }

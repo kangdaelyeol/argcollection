@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
 import styles from './main.module.css';
 import Entity from './Entity';
-import { bubbleSort } from './factory';
+import { bubbleSort, selectionSort, insertionSort, shellSort, mergeSort } from './factory';
 
 const Main = () => {
   const [entities, setEntities] = useState({});
   const [count, setCount] = useState(0);
+  const [cmp, setCmp] = useState(0);
   const selectRef = useRef();
   const titleRef = useRef();
   const arrayRef = useRef();
@@ -14,28 +15,42 @@ const Main = () => {
   const setupRef = useRef();
   const resultRef = useRef();
 
-  const movingComp = () => {
-    arrayRef.current.classList.add(styles.startup);
-    buttonRef.current.classList.add(styles.startdown);
-    button2Ref.current.classList.add(styles.startdown);
-    titleRef.current.classList.add(styles.startup);
-  };
-
+  const setComponentNone = () => {
+    titleRef.current.classList.add(styles.set__op0);
+  }
 
   const onStartArg = () => {
     // movingComp();
-    setTimeout(onArg, 700);
+    setComponentNone();
+    onArg();
   };
 
   const setResultCount = (result) => {
     const {cmpCount, swpCount, log} = result;
+
+    console.log(log);
+    setCmp(cmpCount);
+
+    // Arg start -> Startbtn disabled
+    buttonRef.current.children[1].disabled = true;
+    // Arg end -> Startbtn active
+    setTimeout(() => {
+      buttonRef.current.children[1].disabled = false;
+    }, swpCount * 100);
+
+
     for(let i=0; i<swpCount; i++){
       setTimeout(() =>{
         const newEntities = {}
         Object.keys(entities).forEach((e, index) => {
-          
+          newEntities[index] = {
+            id: index,
+            value: log[i+1][index]
+          }
         })
-        console.log([...log[i+1]]);
+        setEntities(newEntities);
+        // console.log(newEntities);
+        // console.log([...log[i+1]]);
       }, (i+1) * 100)
     }
   }
@@ -51,6 +66,18 @@ const Main = () => {
     switch (arg) {
       case 'bubbleSort':
         result = bubbleSort(argArr);
+        break;
+      case 'selectionSort':
+        result = selectionSort(argArr);
+        break;
+      case 'mergeSort':
+        result = mergeSort(argArr);
+        break;
+      case 'insertionSort':
+        result = insertionSort(argArr);
+        break;
+      case 'shellSort':
+        result = shellSort(argArr);
         break;
       default:
         throw new Error('not Exist Arr');
@@ -120,6 +147,9 @@ const Main = () => {
             id='sort'
           >
             <option value='bubbleSort'>bubbleSort</option>
+            <option value='insertionSort'>insertionSort</option>
+            <option value='selectionSort'>selectionSort</option>
+            <option value='mergeSort'>mergeSort</option>
           </select>
           <button
             onClick={() => {
@@ -138,6 +168,7 @@ const Main = () => {
             set ramdom
           </button>
         </div>
+        <h1>cmpCount: {cmp}</h1>
       </div>
     </div>
   );
